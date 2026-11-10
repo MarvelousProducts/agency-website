@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marvelous Products — Websites, AI Assistants & Marketing</title>
+<meta name="description" content="Marvelous Products builds modern websites, AI assistants, video ads and influencer campaigns for small businesses. Website $250 flat. AI assistant $297 + $150/mo flat.">
+<style>
+  :root{ --bg:#07090d; --bg2:#0b0f16; --card:#0e141f; --line:#1c2635; --text:#eef3f9;
+         --muted:#93a3b8; --gold:#d8a94e; --gold2:#f3cd7e; --cyan:#2fd8ff; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--text); font-family:'Segoe UI', system-ui, Arial, sans-serif; overflow-x:hidden; }
+  .wrap{ max-width:1140px; margin:0 auto; padding:0 22px; }
+  nav{ position:fixed; inset:0 0 auto 0; z-index:50; background:rgba(7,9,13,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  nav .wrap{ display:flex; justify-content:space-between; align-items:center; height:64px; }
+  .logo{ font-weight:900; letter-spacing:2px; font-size:19px; }
+  .logo b{ color:var(--gold); }
+  nav .links a{ color:var(--muted); text-decoration:none; margin-left:24px; font-size:14px; font-weight:600; }
+  nav .links a:hover{ color:var(--text); }
+  .btn{ display:inline-block; background:linear-gradient(135deg, var(--gold), #b57f22); color:#14100a; font-weight:800;
+        padding:12px 26px; border-radius:10px; text-decoration:none; border:none; cursor:pointer; font-size:15px; }
+  .btn:hover{ filter:brightness(1.1); }
+  .btn.ghost{ background:transparent; border:1px solid var(--gold); color:var(--gold2); }
+  header.hero{ padding:150px 0 90px; text-align:center; position:relative;
+    background:linear-gradient(180deg, rgba(7,10,16,.72), rgba(7,10,16,.88)), url('hero-bg.jpg') center/cover no-repeat, var(--bg); }
+  .hero h1, .hero p, .hero .kicker{ text-shadow:0 2px 18px rgba(0,0,0,.55); }
+  .hero-img{ max-width:880px; width:92%; margin:46px auto 0; border-radius:18px; border:1px solid var(--line);
+    box-shadow:0 30px 80px rgba(0,0,0,.55); display:block; }
+  .kicker{ color:var(--gold2); letter-spacing:4px; font-size:12px; font-weight:700; text-transform:uppercase; }
+  h1{ font-size:clamp(38px, 6.4vw, 66px); line-height:1.06; font-weight:900; margin:18px auto 16px; max-width:820px; }
+  h1 span{ background:linear-gradient(90deg, var(--gold2), var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p{ color:var(--muted); font-size:17px; max-width:640px; margin:0 auto 30px; line-height:1.65; }
+  .hero .cta a{ margin:0 6px 10px; }
+  .chips{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:26px; }
+  .chip{ border:1px solid var(--line); background:var(--bg2); color:var(--muted); padding:8px 15px; border-radius:30px; font-size:13px; font-weight:600; }
+  .chip b{ color:var(--gold2); }
+  section{ padding:78px 0; }
+  h2{ font-size:clamp(26px, 4vw, 40px); font-weight:900; text-align:center; margin-bottom:12px; }
+  .sub{ text-align:center; color:var(--muted); max-width:620px; margin:0 auto 44px; line-height:1.65; font-size:15.5px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(245px, 1fr)); gap:18px; }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px 22px; }
+  .card .ic{ font-size:30px; margin-bottom:12px; }
+  .card h3{ font-size:18px; margin-bottom:8px; }
+  .card p{ color:var(--muted); font-size:14.5px; line-height:1.65; }
+  .prices{ display:grid; grid-template-columns:repeat(auto-fit, minmax(265px, 1fr)); gap:18px; }
+  .price{ background:linear-gradient(180deg, #101828, var(--card)); border:1px solid var(--line); border-radius:18px; padding:30px 26px; text-align:center; }
+  .price.hot{ border-color:var(--gold); }
+  .price h3{ font-size:15px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+  .price .big{ font-size:44px; font-weight:900; margin:12px 0 2px; }
+  .price .per{ color:var(--muted); font-size:14px; margin-bottom:16px; }
+  .price ul{ list-style:none; text-align:left; color:var(--muted); font-size:14.5px; line-height:2; margin-bottom:22px; }
+  .price ul li::before{ content:'✓ '; color:var(--gold2); font-weight:800; }
+  .work-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; }
+  .work{ display:block; text-decoration:none; color:var(--text); background:var(--card); border:1px solid var(--line);
+         border-radius:16px; padding:24px 22px; transition:.2s; }
+  .work:hover{ border-color:var(--gold); transform:translateY(-3px); }
+  .work .tag{ color:var(--gold2); font-size:11.5px; letter-spacing:2px; font-weight:700; text-transform:uppercase; }
+  .work h3{ font-size:19px; margin:8px 0 6px; }
+  .work p{ color:var(--muted); font-size:14px; line-height:1.6; }
+  .steps{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; counter-reset:st; }
+  .step{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px 22px; }
+  .step .n{ font-size:30px; font-weight:900; color:var(--gold); opacity:.85; }
+  .step h3{ margin:8px 0 6px; font-size:17px; }
+  .step p{ color:var(--muted); font-size:14.5px; line-height:1.65; }
+  .contact{ text-align:center; background:radial-gradient(700px 380px at 50% 0, rgba(216,169,78,.13), transparent 70%), var(--bg2);
+            border-top:1px solid var(--line); }
+  .contact p{ color:var(--muted); margin:0 auto 26px; max-width:520px; line-height:1.65; }
+  footer{ border-top:1px solid var(--line); padding:28px 0 40px; color:var(--muted); font-size:13px; }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .reveal{ opacity:0; transform:translateY(22px); transition:.7s ease; }
+  .reveal.on{ opacity:1; transform:none; }
+  @media (max-width:640px){ nav .links{ display:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">MARVELOUS <b>PRODUCTS</b></div>
+    <div class="links">
+      <a href="#services">Services</a><a href="#prices">Prices</a><a href="#work">Our Work</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Websites · AI Assistants · Software · Digital Marketing</div>
+    <h1>We build the online presence your business <span>actually deserves.</span></h1>
+    <p>Modern websites, AI assistants that answer every customer, scroll-stopping video and influencer campaigns — built by a team with 2 years of hands-on experience, at prices a small business can actually pay.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Start Your Project</a>
+      <a class="btn ghost" href="#work">See Our Work</a>
+    </div>
+    <div class="chips">
+      <div class="chip">Website — <b>$250 flat</b></div>
+      <div class="chip">AI Assistant — <b>$297 + $150/mo</b></div>
+      <div class="chip">Work first — <b>pay after you see it</b></div>
+    </div>
+    <img class="hero-img" src="hero-bg.jpg" alt="Marvelous Products — digital agency workspace">
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <h2 class="reveal">What we do</h2>
+    <p class="sub reveal">Everything a small business needs to look big online — under one roof.</p>
+    <div class="grid">
+      <div class="card reveal"><div class="ic">🌐</div><h3>Websites</h3>
+        <p>Fast, modern, mobile-first websites that turn visitors into calls and bookings. Restaurant sites include the menu design free.</p></div>
+      <div class="card reveal"><div class="ic">🤖</div><h3>AI Assistants</h3>
+        <p>An AI voice &amp; chat assistant that answers every call and message 24/7, books appointments and sends you the customer's details. One flat monthly price — no per-minute trap.</p></div>
+      <div class="card reveal"><div class="ic">🎬</div><h3>Video &amp; Ads</h3>
+        <p>Short-form video ads and product videos made to stop the scroll and bring leads — plus ads management that fixes campaigns which spend but don't sell.</p></div>
+      <div class="card reveal"><div class="ic">🎨</div><h3>Design</h3>
+        <p>Logos, menus, social posts and full brand refreshes. Old logo looking tired? We redesign it into something customers remember.</p></div>
+      <div class="card reveal"><div class="ic">📣</div><h3>Influencer Marketing</h3>
+        <p>Through our influencer arm, P.M. Marketing Hub, we match your brand with the right micro-influencers and send you 2–3 creators with exact rates. Transparent fee — creator pay is never skimmed.</p></div>
+      <div class="card reveal"><div class="ic">📱</div><h3>Social Media</h3>
+        <p>Content, posting and growth support for Instagram, Facebook, TikTok and YouTube — so your pages look alive every single day.</p></div>
+      <div class="card reveal"><div class="ic">📈</div><h3>Digital Marketing</h3>
+        <p>Facebook, Instagram and Google ads that bring real customers, not just likes — plus Google Business Profile and local SEO so nearby customers find you first. Every campaign tracked, every result reported in simple words.</p></div>
+      <div class="card reveal"><div class="ic">💻</div><h3>Software</h3>
+        <p>Custom software built for your business — QR table ordering for restaurants, booking systems, billing and admin dashboards. We show you a working demo first, then build exactly what your work needs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="prices" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2 class="reveal">Simple, honest prices</h2>
+    <p class="sub reveal">No hourly billing, no surprises. You see the work first — then you pay.</p>
+    <div class="prices">
+      <div class="price hot reveal">
+        <h3>Website</h3>
+        <div class="big">$250</div>
+        <div class="per">flat, one time</div>
+        <ul>
+          <li>Modern design, mobile-first</li>
+          <li>Your photos, menu/services, map</li>
+          <li>Contact &amp; booking buttons</li>
+          <li>Restaurant menu design included free</li>
+          <li>Ready in days, not months</li>
+        </ul>
+        <a class="btn" href="#contact">Get My Website</a>
+      </div>
+      <div class="price reveal">
+        <h3>AI Assistant</h3>
+        <div class="big">$297</div>
+        <div class="per">setup + $150/month flat</div>
+        <ul>
+          <li>Answers calls &amp; messages 24/7</li>
+          <li>Books appointments for you</li>
+          <li>Buyer details sent to you same day</li>
+          <li>Flat monthly — no per-minute charges</li>
+          <li>Demo call made for your business first</li>
+        </ul>
+        <a class="btn ghost" href="#contact">Get a Demo</a>
+      </div>
+      <div class="price reveal">
+        <h3>Growth Package</h3>
+        <div class="big">$350</div>
+        <div class="per">setup + $99/month, no long contract</div>
+        <ul>
+          <li>New website live in 7 days</li>
+          <li>AI assistant — replies &amp; bookings 24/7</li>
+          <li>Google Business Profile optimization</li>
+          <li>Automated review requests</li>
+          <li>Small website updates included</li>
+        </ul>
+        <a class="btn ghost" href="#contact">Grow My Business</a>
+      </div>
+      <div class="price reveal">
+        <h3>Logo Package</h3>
+        <div class="big">$199</div>
+        <div class="per">flat, one time</div>
+        <ul>
+          <li>Fresh concepts to choose from</li>
+          <li>Revisions until it feels right</li>
+          <li>Files for print, web &amp; social</li>
+          <li>Standalone menu design: $60</li>
+        </ul>
+        <a class="btn ghost" href="#contact">Redesign My Logo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2 class="reveal">See the work, live</h2>
+    <p class="sub reveal">Real demo websites we built — open them, scroll them, try them. This is the standard your business gets.</p>
+    <div class="work-grid">
+      <a class="work reveal" href="https://marvelous-demos.netlify.app/doner/" target="_blank"><div class="tag">Restaurant</div>
+        <h3>THE // DÖNER</h3><p>Cinematic scroll website for a döner restaurant — with a working build-your-own configurator.</p></a>
+      <a class="work reveal" href="https://marvelous-demos.netlify.app/drip/" target="_blank"><div class="tag">Product / E-commerce</div>
+        <h3>DRIP UV-C Bottle</h3><p>Product launch page for a smart bottle — story-driven specs and a working buy section.</p></a>
+      <a class="work reveal" href="https://marvelous-demos.netlify.app/dental/" target="_blank"><div class="tag">Clinic</div>
+        <h3>BrightSmile Dental</h3><p>Clean, trust-building website for a dental clinic with services and booking.</p></a>
+      <a class="work reveal" href="https://marvelous-demos.netlify.app/real-estate/" target="_blank"><div class="tag">Real Estate</div>
+        <h3>City Heights</h3><p>Property showcase website for a real-estate business — listings, gallery, enquiries.</p></a>
+      <a class="work reveal" href="https://marvelous-demos.netlify.app/restaurant/" target="_blank"><div class="tag">Restaurant</div>
+        <h3>TastePoint</h3><p>Warm, appetising restaurant site with menu and reservations.</p></a>
+      <a class="work reveal" href="https://marvelous-demos.netlify.app/" target="_blank"><div class="tag">Beauty Clinic</div>
+        <h3>GlowCare Skin Clinic</h3><p>Elegant clinic website with treatments, prices and WhatsApp booking.</p></a>
+      <a class="work reveal" href="https://mp-qr-ordering.pages.dev" target="_blank"><div class="tag">Software — Live Demo</div>
+        <h3>QR Table Ordering</h3><p>Our working restaurant software — scan, order, kitchen display and admin sales. Try it live.</p></a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <h2 class="reveal">How we work</h2>
+    <p class="sub reveal">Simple and safe for you — we prove the work before any payment.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h3>Tell us what you need</h3>
+        <p>One short message is enough — your business, what you want, any example you like.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>We build it first</h3>
+        <p>We start the work and send you a picture or a live demo of it. No payment before you see it.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>You approve, then pay</h3>
+        <p>Happy with what you see? Then you pay, and we finish and hand everything over.</p></div>
+      <div class="step reveal"><div class="n">04</div><h3>We stay with you</h3>
+        <p>Updates, fixes and growth support after launch — you are never left alone with a website.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2 class="reveal">Let's build yours</h2>
+    <p class="reveal">Send one email with your business name and what you need. You will get a reply fast — and a first look at your project before you pay anything.</p>
+    <a class="btn reveal" href="mailto:aliimehtab4578@gmail.com?subject=New%20project%20for%20Marvelous%20Products" style="font-size:16px; padding:15px 34px;">Email Marvelous Products</a>
+    <p class="reveal" style="margin-top:18px; font-size:14px;">aliimehtab4578@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:16px; color:var(--text);">MARVELOUS <b>PRODUCTS</b></div>
+    <div>Websites · AI Assistants · Video · Design · Influencer marketing by P.M. Marketing Hub</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  }), { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
