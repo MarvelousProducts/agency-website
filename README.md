@@ -1,2 +1,3 @@
-# agency-website
-Marvelous Products agency website — services, pricing and portfolio (live: marvelous-products.netlify.app)
+# Marvelous Products — Agency Website
+Live site: https://marvelous-products.netlify.app/
+Services, pricing and portfolio for the Marvelous Products web & AI agency.
